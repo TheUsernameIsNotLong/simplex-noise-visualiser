@@ -4,7 +4,9 @@ from math import floor, ceil
 from random import randint
 from opensimplex import OpenSimplex
 from rich.console import Console
+from rich.text import Text
 from generic import get_int, get_float
+from presets import preset_colours
 
 console = Console()
 
@@ -22,19 +24,6 @@ def determine_gradient_points(num_points: int):
         console.print(f"Gradient point {i + 1} set.", style=f"rgb({r},{g},{b})")
         gradient_points.append([r, g, b])
     return gradient_points
-
-def colourise_value(value: float) -> str:
-    """Convert a noise value to a colored string for terminal output."""
-    # Clamp value between -1 and 1
-    clamped_value = max(-1, min(1, value))
-    # Map value to 0 - 1 range
-    mapped_value = (clamped_value + 1) / 2
-    # Interpolate colour from red, through yellow, to green
-    if mapped_value < 0.5:
-        r, g, b = 255, int(510 * mapped_value), 0
-    else:
-        r, g, b = int(510 * (1 - mapped_value)), 255, 0
-    return f"rgb({r},{g},{b})"
 
 def new_colourise_value(value: float, gradient: list) -> str:
     """Convert a noise value to a colored string for terminal output."""
@@ -66,10 +55,22 @@ def initialise():
     # octaves = get_int("Enter number of octaves (default 1): ", 1)
     # persistence = get_float("Enter persistence (default 0.5): ", 0.5)
     # lacunarity = get_float("Enter lacunarity (default 2.0): ", 2.0)
-
     # 3: Miscellanous display settings
-    gradient_points = get_int("Enter number of gradient points (default 2): ", 2)
-    gradient = determine_gradient_points(gradient_points)
+    print("Would you like to use a preset colour gradient or create your own? (default 1)")
+    print("1. Preset")
+    print("2. Custom")
+    choice = get_int("Enter choice (1-2): ", 1)
+    if choice == 1:
+        print("Available presets:")
+        for i, preset_name in enumerate(preset_colours.keys(), start=1):
+            console.print(f"{i}. {preset_name}")
+        preset_choice = get_int("Select a preset by number (default 1): ", 1)
+        preset_names = list(preset_colours.keys())
+        selected_preset = preset_names[preset_choice - 1]
+        gradient = preset_colours[selected_preset]
+    else:
+        gradient_points = get_int("Enter number of gradient points (default 2): ", 2)
+        gradient = determine_gradient_points(gradient_points)
 
     try:
         show_value = str(input("Show noise values? (y/N): ")).strip().lower() == "y"
