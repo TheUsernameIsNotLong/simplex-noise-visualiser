@@ -7,4 +7,4 @@ if [ ! -d "$VENV_DIR" ]; then
     ./bin/setup.sh
 fi
 
-.venv/bin/python src/main.py
+venv/bin/python src/main.py
