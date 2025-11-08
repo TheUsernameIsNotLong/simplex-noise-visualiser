@@ -26,7 +26,7 @@ def print_summary_bar(user_seed: int, num_rows: int, num_cols: int, scale: float
     per = f"PER: {persistence}"
     lac = f"LAC: {lacunarity}"
     joined_text = " | ".join([seed, size, sca, otv, per, lac])
-    panel = Panel(Align.center(joined_text), style="bold", width=num_cols * 2)
+    panel = Panel(Align.center(joined_text), style="bold", width=num_cols * 2) # This wont align if show_value is true, but since that dramatically increases width, this is acceptable
     console.print(panel)
 
 
@@ -68,7 +68,7 @@ def initialise():
             show_value = False
     except ValueError:
         show_value = False
-    
+
     print_summary_bar(user_seed, num_rows, num_cols, scale, octaves, persistence, lacunarity)
 
     return ox, num_rows, num_cols, scale, octaves, persistence, lacunarity, gradient, show_value
@@ -103,6 +103,7 @@ def generate(ox: OpenSimplex, num_rows: int, num_cols: int, scale: float, octave
             else:
                 console.print(f"[{noise_value:+.2f}]", style=colour, end=" ")
         console.print()  # New line after each row
+
 
 if __name__ == "__main__":
     parameters = initialise()
