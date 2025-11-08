@@ -24,7 +24,7 @@ Currently, the automatic installers are in the form of launching `run.bat` and `
 
 2. Run the command `chmod +x run.sh bin/setup.sh` in the project's root to make the run scripts executable.
 
-3. Launch the program with `run.sh`
+3. Launch the program with `run.sh`. The program should create the virtual environment and install necessary dependencies for you on it's first launch.
 
 I'm actually unsure whether this works on mac lol
 
