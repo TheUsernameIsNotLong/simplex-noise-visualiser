@@ -84,5 +84,5 @@ def generate(ox: OpenSimplex, num_rows: int, num_cols: int, scale: float, octave
         console.print()  # New line after each row
 
 if __name__ == "__main__":
-    ox, num_rows, num_cols, scale, octaves, persistence, lacunarity, gradient, show_value = initialise()
-    generate(ox, num_rows, num_cols, scale, octaves, persistence, lacunarity, gradient, show_value)
+    parameters = initialise()
+    generate(*parameters)
