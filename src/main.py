@@ -48,12 +48,12 @@ def initialise():
     ox = OpenSimplex(seed=user_seed)
 
     # 2: Noise generation settings
-    num_rows = get_int("Enter number of rows (default 20): ", 20)
-    num_cols = get_int("Enter number of columns (default 50): ", 50)
-    scale = get_float("Enter scale (default 0.1): ", 0.1)
-    # octaves = get_int("Enter number of octaves (default 1): ", 1)
-    # persistence = get_float("Enter persistence (default 0.5): ", 0.5)
-    # lacunarity = get_float("Enter lacunarity (default 2.0): ", 2.0)
+    num_rows = get_int("Enter number of rows (default 20): ", 20, upper=1000, lower=1)
+    num_cols = get_int("Enter number of columns (default 50): ", 50, upper=1000, lower=1)
+    scale = get_float("Enter scale (default 0.1): ", 0.1, upper=10, lower=0)
+    # octaves = get_int("Enter number of octaves (default 1): ", 1, upper=10, lower=1)
+    # persistence = get_float("Enter persistence (default 0.5): ", 0.5, upper=1, lower=0)
+    # lacunarity = get_float("Enter lacunarity (default 2.0): ", 2.0, upper=10, lower=1)
     # 3: Miscellanous display settings
     print("Would you like to use a preset colour gradient or create your own? (default 1)")
     print("1. Preset")
