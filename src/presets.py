@@ -10,11 +10,6 @@
 
 preset_colours = {}
 
-preset_traffic = {"TRAFFIC LIGHTS":
-                  [[255, 0, 0],
-                  [255, 255, 0],
-                  [0, 255, 0]]}
-
 preset_rainbow = {"VIBRANT RAINBOW":
                   [[255, 0, 0],
                   [255, 255, 0],
@@ -22,6 +17,11 @@ preset_rainbow = {"VIBRANT RAINBOW":
                   [0, 255, 255],
                   [0, 0, 255],
                   [255, 0, 255]]}
+
+preset_traffic = {"TRAFFIC LIGHTS":
+                  [[255, 0, 0],
+                  [255, 255, 0],
+                  [0, 255, 0]]}
 
 preset_greyscale = {"GLOOMY GREYSCALE":
                     [[0, 0, 0],
@@ -45,8 +45,8 @@ preset_hot = {"RED-HOT FIRE":
 #                      [R, G, B],
 #                      [R, G, B]]}
 
-preset_colours.update(preset_traffic)
 preset_colours.update(preset_rainbow)
+preset_colours.update(preset_traffic)
 preset_colours.update(preset_greyscale)
 preset_colours.update(preset_icy)
 preset_colours.update(preset_hot)
