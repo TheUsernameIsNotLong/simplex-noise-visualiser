@@ -106,7 +106,7 @@ def generate(ox: OpenSimplex, num_rows: int, num_cols: int, scale: float, octave
             noise_value = noise_map[i][j]
             colour = new_colourise_value(noise_value, gradient)
             if not show_value:
-                console.print("[]", style=colour, end="")
+                console.print("██", style=colour, end="")
             else:
                 console.print(f"[{noise_value:+.2f}]", style=colour, end=" ")
         console.print()  # New line after each row
